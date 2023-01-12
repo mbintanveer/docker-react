@@ -19,9 +19,9 @@ jobs:
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v18
         with:
-          application_name: docker-gh
-          environment_name: Dockergh-env
-          existing_bucket_name: elasticbeanstalk-us-east-1-923445559289
+          application_name: docker-2
+          environment_name: Docker2-env
+          existing_bucket_name: elasticbeanstalk-us-east-1-782692356642
           region: us-east-1
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
