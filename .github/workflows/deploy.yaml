@@ -21,7 +21,7 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: docker2
+          application_name: docker-2
           environment_name: Docker2-env
           existing_bucket_name: elasticbeanstalk-us-east-1-782692356642
           region: us-east-1
