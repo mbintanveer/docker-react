@@ -2,8 +2,8 @@ name: Deploy Frontend
 on:
   push:
     branches:
-      - main
-
+      - main # check your repo, your default branch might be master!
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,16 +12,16 @@ jobs:
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - run: docker build -t cygnetops/react-test -f Dockerfile.dev .
       - run: docker run -e CI=true cygnetops/react-test npm test
-
+ 
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
-
+ 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v18
         with:
-	  aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-	  aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: docker-2
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+          application_name: docker2
           environment_name: Docker2-env
           existing_bucket_name: elasticbeanstalk-us-east-1-782692356642
           region: us-east-1
